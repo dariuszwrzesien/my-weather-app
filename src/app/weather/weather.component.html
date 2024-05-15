@@ -1,11 +1,18 @@
 <mat-card class="app-weather-cart">
   <mat-card-header>
-    <mat-card-title>Current weather</mat-card-title>
-    <mat-card-subtitle class="app-weather-error" *ngIf="errorMessage()">{{
-      errorMessage()
-    }}</mat-card-subtitle>
+    <mat-card-title class="app-weather-title">Current weather</mat-card-title>
+    <mat-card-subtitle
+      class="app-weather-error"
+      *ngIf="errorMessage() as errorMessage"
+      >{{ errorMessage }}</mat-card-subtitle
+    >
   </mat-card-header>
   <mat-card-actions>
     <mat-spinner *ngIf="isLoading()"></mat-spinner>
+    <div class="app-weather-info" *ngIf="!isLoading() && !errorMessage">
+      <div>{{ weather().main.temp }}°C</div>
+      <div>|</div>
+      <div>{{ weather().weather[0].main }}</div>
+    </div>
   </mat-card-actions>
 </mat-card>

@@ -13,7 +13,7 @@ export class WeatherService {
 
   private weatherResult$: Observable<ResponseWeather> = this.http
     .get<any>(
-      `${env.openWeather.url}lat=50.298&lon=18.677&appid=${env.openWeather.apiKey}`
+      `${env.openWeather.url}lat=50.298&lon=18.677&units=metric&appid=${env.openWeather.apiKey}`
     )
     .pipe(
       tap((data) => console.log('Data: ', JSON.stringify(data))),
